@@ -1,0 +1,171 @@
+<!--
+  ═══════════════════════════════════════════════════════════
+  DeepSeek Monitor — 淘宝详情页
+  使用方法：
+  1. 将图片上传到淘宝图片空间
+  2. 替换下方所有 IMG_SRC 为你的图片空间 URL
+  3. 全选复制 → 粘贴到淘宝详情编辑器「源码模式」
+  ═══════════════════════════════════════════════════════════
+-->
+<div style="max-width:750px;margin:0 auto;font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;color:#333;line-height:1.8">
+
+<!-- ═══ 顶部 Banner ═══ -->
+<div style="text-align:center;background:linear-gradient(135deg,#0f0c29,#1a1a4e,#24243e,#0f0c29);padding:50px 20px;border-radius:12px;margin-bottom:20px">
+  <div style="width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,#4D6BFE,#7B5CFC,#A855F7);display:inline-flex;align-items:center;justify-content:center;font-size:54px;font-weight:900;color:#fff;letter-spacing:2px;margin-bottom:24px;box-shadow:0 12px 40px rgba(77,107,254,0.4)">DS</div>
+  <h1 style="color:#fff;font-size:32px;font-weight:800;margin:0 0 8px 0;letter-spacing:1px">DeepSeek Monitor</h1>
+  <p style="color:rgba(255,255,255,0.7);font-size:16px;margin:0">DeepSeek API 用量监控 · macOS 菜单栏工具</p>
+</div>
+
+<!-- ═══ 核心卖点 ═══ -->
+<div style="display:flex;flex-wrap:wrap;gap:12px;margin:20px 0">
+  <div style="flex:1;min-width:160px;background:#f8f7ff;border-radius:10px;padding:18px 14px;text-align:center">
+    <div style="font-size:32px;margin-bottom:8px">📊</div>
+    <div style="font-weight:700;font-size:15px;margin-bottom:4px">菜单栏显示</div>
+    <div style="font-size:12px;color:#999">余额直接出现在状态栏</div>
+  </div>
+  <div style="flex:1;min-width:160px;background:#f8f7ff;border-radius:10px;padding:18px 14px;text-align:center">
+    <div style="font-size:32px;margin-bottom:8px">🔄</div>
+    <div style="font-weight:700;font-size:15px;margin-bottom:4px">自动刷新</div>
+    <div style="font-size:12px;color:#999">1分钟~1小时可调</div>
+  </div>
+  <div style="flex:1;min-width:160px;background:#f8f7ff;border-radius:10px;padding:18px 14px;text-align:center">
+    <div style="font-size:32px;margin-bottom:8px">📉</div>
+    <div style="font-weight:700;font-size:15px;margin-bottom:4px">消耗追踪</div>
+    <div style="font-size:12px;color:#999">实时统计 API 开销</div>
+  </div>
+  <div style="flex:1;min-width:160px;background:#f8f7ff;border-radius:10px;padding:18px 14px;text-align:center">
+    <div style="font-size:32px;margin-bottom:8px">🔐</div>
+    <div style="font-weight:700;font-size:15px;margin-bottom:4px">数据安全</div>
+    <div style="font-size:12px;color:#999">Key 仅存本地，绝不上传</div>
+  </div>
+</div>
+
+<!-- ═══ 截图展示 ═══ -->
+<div style="margin:30px 0">
+  <h2 style="font-size:20px;font-weight:700;text-align:center;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid #4D6BFE">📸 产品截图</h2>
+
+  <!-- IMG_SRC: 替换为 01-cover-800.png 的图片空间 URL -->
+  <img src="IMG_SRC_01" alt="DeepSeek Monitor 封面" style="width:100%;border-radius:10px;margin-bottom:16px;box-shadow:0 4px 16px rgba(0,0,0,0.1)">
+
+  <!-- IMG_SRC: 替换为 02-menubar-800.png 的图片空间 URL -->
+  <img src="IMG_SRC_02" alt="菜单栏余额显示" style="width:100%;border-radius:10px;margin-bottom:16px;box-shadow:0 4px 16px rgba(0,0,0,0.1)">
+
+  <!-- IMG_SRC: 替换为 03-panel-800.png 的图片空间 URL -->
+  <img src="IMG_SRC_03" alt="余额详情面板" style="width:100%;border-radius:10px;margin-bottom:16px;box-shadow:0 4px 16px rgba(0,0,0,0.1)">
+
+  <!-- IMG_SRC: 替换为 04-settings-800.png 的图片空间 URL -->
+  <img src="IMG_SRC_04" alt="设置界面" style="width:100%;border-radius:10px;margin-bottom:16px;box-shadow:0 4px 16px rgba(0,0,0,0.1)">
+</div>
+
+<!-- ═══ 功能介绍 ═══ -->
+<div style="margin:30px 0">
+  <h2 style="font-size:20px;font-weight:700;text-align:center;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid #4D6BFE">✨ 功能列表</h2>
+
+  <table style="width:100%;border-collapse:collapse">
+    <tr style="background:#fafafa">
+      <td style="padding:12px 16px;font-weight:600;width:30%">菜单栏余额</td>
+      <td style="padding:12px 16px;color:#666">实时显示 DeepSeek API 当前余额，支持 ¥ / $ / €</td>
+    </tr>
+    <tr>
+      <td style="padding:12px 16px;font-weight:600">自动刷新</td>
+      <td style="padding:12px 16px;color:#666">后台定时查询，可选 1 / 5 / 10 / 30 / 60 分钟间隔</td>
+    </tr>
+    <tr style="background:#fafafa">
+      <td style="padding:12px 16px;font-weight:600">余额明细</td>
+      <td style="padding:12px 16px;color:#666">充值余额 vs 赠送余额 分开显示，清晰明了</td>
+    </tr>
+    <tr>
+      <td style="padding:12px 16px;font-weight:600">消耗统计</td>
+      <td style="padding:12px 16px;color:#666">记录本次会话累计消耗金额，随时掌握花费</td>
+    </tr>
+    <tr style="background:#fafafa">
+      <td style="padding:12px 16px;font-weight:600">API Key 测试</td>
+      <td style="padding:12px 16px;color:#666">设置页内置「测试连接」按钮，即时验证 Key 有效性</td>
+    </tr>
+    <tr>
+      <td style="padding:12px 16px;font-weight:600">纯菜单栏运行</td>
+      <td style="padding:12px 16px;color:#666">不占 Dock 位，Cmd+Tab 不会出现，安静后台运行</td>
+    </tr>
+    <tr style="background:#fafafa">
+      <td style="padding:12px 16px;font-weight:600">低资源占用</td>
+      <td style="padding:12px 16px;color:#666">SwiftUI 原生开发，空闲内存占用 < 30MB</td>
+    </tr>
+  </table>
+</div>
+
+<!-- ═══ 安装步骤 ═══ -->
+<div style="margin:30px 0">
+  <h2 style="font-size:20px;font-weight:700;text-align:center;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid #4D6BFE">📥 安装指南</h2>
+
+  <!-- IMG_SRC: 替换为 05-install-800.png 的图片空间 URL -->
+  <img src="IMG_SRC_05" alt="安装步骤" style="width:100%;border-radius:10px;margin-bottom:16px;box-shadow:0 4px 16px rgba(0,0,0,0.1)">
+
+  <div style="background:#fffbe6;border:1px solid #ffe58f;border-radius:10px;padding:16px 20px;margin:16px 0">
+    <strong style="color:#d48806">⚠️ 首次打开须知：</strong>
+    <span style="color:#8c6d1f;font-size:13px">由于 App 未经过 Apple 官方公证，首次打开时请 <strong>右键（或 Control + 点击）App → 选择「打开」</strong> → 在弹出的对话框中再次点击「打开」即可。此后正常双击打开即可。</span>
+  </div>
+</div>
+
+<!-- ═══ 获取 API Key ═══ -->
+<div style="margin:30px 0">
+  <h2 style="font-size:20px;font-weight:700;text-align:center;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid #4D6BFE">🔑 如何获取 API Key</h2>
+
+  <div style="background:#f0f5ff;border-radius:10px;padding:20px">
+    <ol style="margin:0;padding-left:20px;font-size:14px;line-height:2.2">
+      <li>打开 <a href="https://platform.deepseek.com" target="_blank" style="color:#4D6BFE;font-weight:600">platform.deepseek.com</a> 并注册/登录</li>
+      <li>点击左侧菜单「API Keys」</li>
+      <li>点击「创建新的 API Key」</li>
+      <li>复制以 <code style="background:#e8eeff;padding:2px 6px;border-radius:4px;font-family:monospace">sk-</code> 开头的一串字符</li>
+      <li>粘贴到 DeepSeek Monitor 的设置窗口中，保存即可</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ═══ FAQ ═══ -->
+<div style="margin:30px 0">
+  <h2 style="font-size:20px;font-weight:700;text-align:center;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid #4D6BFE">❓ 常见问题</h2>
+
+  <div style="margin-bottom:14px">
+    <div style="font-weight:700;font-size:15px;margin-bottom:4px">Q: 支持 Windows 吗？</div>
+    <div style="font-size:13px;color:#666;padding-left:8px;border-left:3px solid #eee">A: 不支持。DeepSeek Monitor 是 macOS 独占应用，仅支持 macOS 13 及以上系统。</div>
+  </div>
+
+  <div style="margin-bottom:14px">
+    <div style="font-weight:700;font-size:15px;margin-bottom:4px">Q: 我的 API Key 安全吗？</div>
+    <div style="font-size:13px;color:#666;padding-left:8px;border-left:3px solid #4D6BFE">A: <strong>绝对安全。</strong>Key 仅保存在你 Mac 本机的 UserDefaults 中，不会上传到任何第三方服务器。所有 API 请求直接从你的电脑发到 DeepSeek 官方服务器 (api.deepseek.com)。</div>
+  </div>
+
+  <div style="margin-bottom:14px">
+    <div style="font-weight:700;font-size:15px;margin-bottom:4px">Q: 会影响电脑性能吗？</div>
+    <div style="font-size:13px;color:#666;padding-left:8px;border-left:3px solid #eee">A: 完全不会。纯 SwiftUI 原生开发，每 5 分钟仅发送一次极小的 HTTP 请求（几百字节），空闲时 CPU 和内存占用几乎为零。</div>
+  </div>
+
+  <div style="margin-bottom:14px">
+    <div style="font-weight:700;font-size:15px;margin-bottom:4px">Q: 能否查看历史用量？</div>
+    <div style="font-size:13px;color:#666;padding-left:8px;border-left:3px solid #eee">A: 当前版本显示「本次会话消耗」（App 启动至今的累计消耗）。每日/每月历史统计功能计划在后续版本中加入。</div>
+  </div>
+
+  <div style="margin-bottom:14px">
+    <div style="font-weight:700;font-size:15px;margin-bottom:4px">Q: 支持 Intel Mac 吗？</div>
+    <div style="font-size:13px;color:#666;padding-left:8px;border-left:3px solid #4D6BFE">A: <strong>支持！</strong>同时兼容 Apple Silicon（M1/M2/M3/M4/M5）和 Intel 芯片的 Mac。</div>
+  </div>
+</div>
+
+<!-- ═══ 系统要求 ═══ -->
+<div style="background:#f8f8f8;border-radius:10px;padding:20px;margin:30px 0">
+  <h3 style="font-size:16px;font-weight:700;margin:0 0 12px 0">💻 系统要求</h3>
+  <table style="width:100%;font-size:13px">
+    <tr><td style="padding:4px 0;color:#999;width:30%">操作系统</td><td style="padding:4px 0">macOS 13 (Ventura) 或更高版本</td></tr>
+    <tr><td style="padding:4px 0;color:#999">芯片</td><td style="padding:4px 0">Apple Silicon / Intel</td></tr>
+    <tr><td style="padding:4px 0;color:#999">其他</td><td style="padding:4px 0">需要有效的 DeepSeek API Key</td></tr>
+  </table>
+</div>
+
+<!-- ═══ 底部 ═══ -->
+<div style="text-align:center;padding:30px 0;color:#999;font-size:12px;border-top:1px solid #eee;margin-top:30px">
+  <p>DeepSeek Monitor v1.0.0</p>
+  <p>macOS 原生开发 · SwiftUI · 安全可靠</p>
+  <p style="margin-top:8px">本产品与 DeepSeek 公司无关，为第三方独立开发工具</p>
+</div>
+
+</div>

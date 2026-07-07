@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeepSeek Monitor — 产品展示</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'SF Pro Display', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f5f5f7; }
+
+  /* ── Canvas ── */
+  .canvas {
+    width: 800px; height: 800px;
+    margin: 40px auto;
+    position: relative; overflow: hidden;
+  }
+
+  /* ═══════════════════════════════════════════
+     CANVAS 1 — 主图：产品封面
+     ═══════════════════════════════════════════ */
+  .canvas-hero {
+    background: linear-gradient(135deg, #0f0c29 0%, #1a1a4e 30%, #24243e 60%, #0f0c29 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; color: white;
+  }
+  .icon-circle {
+    width: 180px; height: 180px; border-radius: 50%;
+    background: linear-gradient(135deg, #4D6BFE, #7B5CFC, #A855F7);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 80px; font-weight: 900; color: white;
+    box-shadow: 0 20px 60px rgba(77,107,254,0.5);
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+  }
+  .hero-title { font-size: 52px; font-weight: 800; letter-spacing: 2px; margin-bottom: 12px; }
+  .hero-subtitle { font-size: 22px; font-weight: 400; color: rgba(255,255,255,0.7); margin-bottom: 30px; }
+  .hero-tags { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+  .hero-tag {
+    padding: 8px 20px; border-radius: 20px;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    font-size: 14px; color: rgba(255,255,255,0.85);
+  }
+
+  /* ═══════════════════════════════════════════
+     CANVAS 2 — 亮点：菜单栏余额显示
+     ═══════════════════════════════════════════ */
+  .canvas-menubar {
+    background: linear-gradient(180deg, #1c1c1e 0%, #2c2c2e 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: white; padding: 60px;
+  }
+  .menubar-preview {
+    background: rgba(255,255,255,0.08);
+    border-radius: 12px; padding: 16px 24px;
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 24px;
+  }
+  .menubar-icon { font-size: 18px; }
+  .menubar-balance {
+    font-size: 15px; font-weight: 600; font-family: 'SF Mono', 'Menlo', monospace;
+    color: #fff;
+  }
+  .big-title { font-size: 36px; font-weight: 700; margin-bottom: 8px; text-align: center; }
+  .big-desc { font-size: 18px; color: rgba(255,255,255,0.6); text-align: center; max-width: 500px; line-height: 1.6; }
+
+  /* ═══════════════════════════════════════════
+     CANVAS 3 — 下拉详情面板
+     ═══════════════════════════════════════════ */
+  .canvas-panel {
+    background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .dropdown-mock {
+    width: 320px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 14px; padding: 20px;
+    color: white; backdrop-filter: blur(20px);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+  }
+  .dropdown-header {
+    display: flex; align-items: center; gap: 8px; margin-bottom: 16px;
+    padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .dropdown-header .icon { font-size: 18px; }
+  .dropdown-header .title { font-size: 14px; font-weight: 600; }
+  .balance-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
+  .balance-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+  .balance-value { font-size: 26px; font-weight: 700; font-family: 'SF Mono','Menlo',monospace; }
+  .detail-row { display: flex; justify-content: space-between; margin-bottom: 6px; }
+  .detail-label { font-size: 12px; color: rgba(255,255,255,0.4); }
+  .detail-value { font-size: 12px; font-family: 'SF Mono','Menlo',monospace; color: rgba(255,255,255,0.7); }
+  .consumed-row { display: flex; justify-content: space-between; margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.08); }
+  .consumed-label { font-size: 12px; color: rgba(255,255,255,0.5); }
+  .consumed-value { font-size: 13px; font-family: 'SF Mono','Menlo',monospace; color: #f59e0b; font-weight: 500; }
+  .refresh-status { display: flex; align-items: center; gap: 6px; justify-content: flex-end; margin-top: 10px; }
+  .green-dot { width: 6px; height: 6px; border-radius: 50%; background: #22c55e; }
+  .refresh-text { font-size: 10px; color: rgba(255,255,255,0.3); }
+  .dropdown-footer { display: flex; justify-content: space-between; margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.08); }
+  .footer-btn { font-size: 12px; color: rgba(255,255,255,0.6); padding: 4px 8px; border-radius: 6px; cursor: default; }
+  .footer-btn:hover { background: rgba(255,255,255,0.1); }
+
+  /* ═══════════════════════════════════════════
+     CANVAS 4 — 设置窗口
+     ═══════════════════════════════════════════ */
+  .canvas-settings {
+    background: linear-gradient(180deg, #1c1c2e 0%, #1a1a2e 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .settings-mock {
+    width: 480px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px; overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+  }
+  .settings-toolbar {
+    background: rgba(255,255,255,0.04);
+    padding: 8px 16px; display: flex; align-items: center; gap: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .toolbar-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .toolbar-dot.r { background: #ff5f57; } .toolbar-dot.y { background: #febc2e; } .toolbar-dot.g { background: #28c840; }
+  .toolbar-title { font-size: 12px; color: rgba(255,255,255,0.4); margin-left: 8px; }
+  .settings-body { padding: 24px; }
+  .settings-section { margin-bottom: 20px; }
+  .section-title { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+  .input-row { display: flex; gap: 8px; align-items: center; }
+  .api-input {
+    flex: 1; padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.05); color: white; font-size: 13px; font-family: 'SF Mono','Menlo',monospace;
+  }
+  .btn { padding: 7px 16px; border-radius: 7px; font-size: 12px; font-weight: 500; border: none; cursor: default; }
+  .btn-primary { background: #4D6BFE; color: white; }
+  .btn-secondary { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.1); }
+  .btn-row { display: flex; gap: 8px; margin-top: 8px; }
+  .success-badge { display: flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 11px; color: #22c55e; }
+  .radio-group { margin-top: 8px; }
+  .radio-row { display: flex; align-items: center; gap: 8px; padding: 6px 0; font-size: 13px; color: rgba(255,255,255,0.7); }
+  .radio { width: 14px; height: 14px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); display: inline-block; }
+  .radio.selected { border-color: #4D6BFE; background: #4D6BFE; box-shadow: inset 0 0 0 2px #1a1a2e; }
+  .footer-note { font-size: 10px; color: rgba(255,255,255,0.2); margin-top: 16px; }
+
+  /* ═══════════════════════════════════════════
+     CANVAS 5 — 安装教程
+     ═══════════════════════════════════════════ */
+  .canvas-install {
+    background: linear-gradient(135deg, #0c0c1d 0%, #1a1a3e 50%, #0c0c1d 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: white; padding: 60px;
+  }
+  .install-steps { display: flex; flex-direction: column; gap: 24px; width: 100%; max-width: 460px; }
+  .install-step { display: flex; align-items: flex-start; gap: 16px; }
+  .step-num {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: linear-gradient(135deg, #4D6BFE, #A855F7);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 700; flex-shrink: 0;
+  }
+  .step-content h3 { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .step-content p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+  .install-title { font-size: 36px; font-weight: 700; margin-bottom: 40px; text-align: center; }
+</style>
+</head>
+<body>
+
+<!-- ─── CANVAS 1: 主图 ─── -->
+<div class="canvas canvas-hero" id="canvas1">
+  <div class="icon-circle">DS</div>
+  <div class="hero-title">DeepSeek Monitor</div>
+  <div class="hero-subtitle">DeepSeek API 用量 · 实时监控</div>
+  <div class="hero-tags">
+    <span class="hero-tag">菜单栏监控</span>
+    <span class="hero-tag">自动刷新</span>
+    <span class="hero-tag">余额追踪</span>
+    <span class="hero-tag">macOS 原生</span>
+  </div>
+</div>
+
+<!-- ─── CANVAS 2: 菜单栏亮点 ─── -->
+<div class="canvas canvas-menubar" id="canvas2">
+  <div class="menubar-preview">
+    <span class="menubar-icon">DS</span>
+    <span class="menubar-balance">¥1,234.56</span>
+  </div>
+  <div class="big-title">余额一目了然</div>
+  <div class="big-desc">直接在 macOS 菜单栏显示 DeepSeek API 余额，无需打开网页，无需登录后台。</div>
+</div>
+
+<!-- ─── CANVAS 3: 下拉面板 ─── -->
+<div class="canvas canvas-panel" id="canvas3">
+  <div class="dropdown-mock">
+    <div class="dropdown-header">
+      <span class="icon">🧠</span>
+      <span class="title">DeepSeek 用量监控</span>
+    </div>
+
+    <div class="balance-row">
+      <span class="balance-label">当前余额</span>
+      <span class="balance-value">¥1,234.56</span>
+    </div>
+
+    <div class="detail-row">
+      <span class="detail-label">充值余额</span>
+      <span class="detail-value">¥1,000.00</span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-label">赠送余额</span>
+      <span class="detail-value">¥234.56</span>
+    </div>
+
+    <div class="consumed-row">
+      <span class="consumed-label">本次会话消耗</span>
+      <span class="consumed-value">-¥12.34</span>
+    </div>
+
+    <div class="refresh-status">
+      <div class="green-dot"></div>
+      <span class="refresh-text">更新于 16:45:30</span>
+    </div>
+
+    <div class="dropdown-footer">
+      <span class="footer-btn">🔄 刷新</span>
+      <span class="footer-btn">⚙ 设置</span>
+      <span class="footer-btn">⏻ 退出</span>
+    </div>
+  </div>
+</div>
+
+<!-- ─── CANVAS 4: 设置窗口 ─── -->
+<div class="canvas canvas-settings" id="canvas4">
+  <div class="settings-mock">
+    <div class="settings-toolbar">
+      <span class="toolbar-dot r"></span>
+      <span class="toolbar-dot y"></span>
+      <span class="toolbar-dot g"></span>
+      <span class="toolbar-title">DeepSeek Monitor 设置</span>
+    </div>
+    <div class="settings-body">
+      <div class="settings-section">
+        <div class="section-title">API Key</div>
+        <div class="input-row">
+          <input class="api-input" value="sk-••••••••••••••••••••••••••" readonly>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary">保存</button>
+          <button class="btn btn-secondary">测试连接</button>
+        </div>
+        <div class="success-badge">
+          <span>✓</span> 连接成功，余额: ¥1,234.56
+        </div>
+      </div>
+      <div class="settings-section">
+        <div class="section-title">刷新设置</div>
+        <div class="radio-group">
+          <div class="radio-row"><span class="radio"></span> 1 分钟</div>
+          <div class="radio-row"><span class="radio selected"></span> 5 分钟</div>
+          <div class="radio-row"><span class="radio"></span> 10 分钟</div>
+          <div class="radio-row"><span class="radio"></span> 30 分钟</div>
+          <div class="radio-row"><span class="radio"></span> 1 小时</div>
+        </div>
+      </div>
+      <div class="footer-note">在 platform.deepseek.com → API Keys 获取你的 Key</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── CANVAS 5: 安装步骤 ─── -->
+<div class="canvas canvas-install" id="canvas5">
+  <div class="install-title">三步开始使用</div>
+  <div class="install-steps">
+    <div class="install-step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>打开 DMG，拖入 Applications</h3>
+        <p>双击下载的 DMG 文件，将 App 拖拽到应用程序文件夹</p>
+      </div>
+    </div>
+    <div class="install-step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>首次右键打开</h3>
+        <p>右键（或 Control + 点击）App → 选择「打开」→ 确认运行</p>
+      </div>
+    </div>
+    <div class="install-step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>设置 API Key</h3>
+        <p>点击菜单栏图标 → 设置 → 输入 DeepSeek API Key → 保存</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
