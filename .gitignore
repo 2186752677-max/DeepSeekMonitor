@@ -1,0 +1,20 @@
+# Build artifacts
+.build/
+DerivedData/
+
+# IDE
+.xcode/
+*.xcworkspace/
+xcuserdata/
+
+# DMG & packaging
+*.dmg
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Icon temp
+/tmp/
